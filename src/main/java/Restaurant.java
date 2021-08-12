@@ -68,6 +68,14 @@ public class Restaurant {
     public String getName() {
         return name;
     }
-
+    public double getItemsPrice(List<String> itemsList) {
+        float totalPrice = 0.0f;
+        for(String itemName : itemsList){
+            Item item = findItemByName(itemName);
+            float itemPrice = Float.parseFloat(item.toString().split(":")[1]);
+            totalPrice += itemPrice;
+        }
+        return totalPrice;
+    }
 
 }
