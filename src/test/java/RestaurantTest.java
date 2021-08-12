@@ -72,6 +72,17 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
+    @Test
+    public void get_total_price_of_multiple_items_passed_to_the_function(){
+        List<String> selectedItems = new ArrayList<>();
+        selectedItems.add("Sweet corn soup");
+        selectedItems.add("Vegetable lasagne");
+        double totalCost = restaurant.getItemsPrice(selectedItems);
+        List<Item> items = restaurant.getMenu();
+        float itemOnePrice = Float.parseFloat(items.get(0).toString().split(":")[1]);
+        float itemTwoPrice = Float.parseFloat(items.get(1).toString().split(":")[1]);
+        float totalPrice = itemOnePrice + itemTwoPrice;
+        assertEquals(totalCost,totalPrice);
+    }
 
 }
